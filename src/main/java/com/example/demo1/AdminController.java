@@ -188,10 +188,11 @@ public class AdminController implements Initializable {
     /** Notifications **/
 
     private void getNotification() {
+        String sql = "SELECT * FROM admin_notification order by notification_id desc";
         try {
             DBC connectNow = new DBC();
             Connection connectionDB = connectNow.getConnection();
-            ResultSet queryResultUser = connectionDB.createStatement().executeQuery("SELECT * FROM admin_notification order by notification_id desc");
+            ResultSet queryResultUser = connectionDB.createStatement().executeQuery(sql);
 
             List<String> notificationList = new ArrayList<>();
 
@@ -203,7 +204,7 @@ public class AdminController implements Initializable {
             String messenger = notificationList.get(0);
 
 
-            Image image = new Image("C:\\my\\Web-work\\2022\\demo1\\src\\main\\resources\\com\\icons\\usercreated.png");
+            Image image = new Image("C:\\Users\\Lenovo\\Desktop\\ASSA-main\\src\\main\\resources\\com\\icons\\usercreated.png");
             Notifications notificationBuilder = Notifications.create()
                     .title("Created new User")
                     .text(messenger)

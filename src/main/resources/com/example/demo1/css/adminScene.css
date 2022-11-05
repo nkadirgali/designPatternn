@@ -38,8 +38,9 @@
 
 }
 .userHomeSecondHalf{
-    -fx-background-color: #ccccff;
+/*    -fx-background-color: #ccccff;*/
     -fx-background-radius: 45px;
+    -fx-background-color: white;
 }
 .carButton{
     -fx-background-color: #99cc66;

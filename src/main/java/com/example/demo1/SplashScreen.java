@@ -46,7 +46,7 @@ public class SplashScreen implements Initializable {
         if(event.getCode() == KeyCode.ENTER){
             System.out.println("SPACE ENTERED!");
             try {
-                SceneController scene = new SceneController();
+                SceneController scene = SceneController.getInstance();
                 mediaPlayer.stop();
                 scene.switchToUserMainScene(event);
 

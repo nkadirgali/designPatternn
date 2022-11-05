@@ -75,7 +75,7 @@ public class RegisterController implements Initializable{
 
             /** -- -- -- -- -- -- -- -- -- -- -- -- -- -- **/
 
-            SceneController scene = new SceneController();
+            SceneController scene = SceneController.getInstance();
             scene.switchToSplashScreenScene(event);
 
         }catch (Exception e){
@@ -86,8 +86,4 @@ public class RegisterController implements Initializable{
 
 
     }
-
-
-
-
 }

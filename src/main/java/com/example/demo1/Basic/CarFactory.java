@@ -2,6 +2,12 @@ package com.example.demo1.Basic;
 import com.example.demo1.CarBt;
 import com.example.demo1.CarSub.BodyType.*;
 import com.example.demo1.CarSub.FuelType.*;
+import com.example.demo1.CarSub.Klass.Business;
+import com.example.demo1.CarSub.Klass.Comfort;
+import com.example.demo1.CarSub.Klass.Economy;
+import com.example.demo1.CarSub.Manufacturer.America;
+import com.example.demo1.CarSub.Manufacturer.Asian;
+import com.example.demo1.CarSub.Manufacturer.Europe;
 import com.example.demo1.ConcreteObjects.Car;
 
 import java.util.Scanner;
@@ -16,11 +22,20 @@ public class CarFactory extends TransportFactory{
         else if(CarBt.BodyTypeCAR.equals("SuperBut")) car = new Super(car);
 //        else if(type==6) carx = new Minivan(new Car());
         else car = new Minivan(car);
-        if(CarBt.FuelTypeCAR.equals("petrolBut")) return new Petrol(car);
-        else if(CarBt.FuelTypeCAR.equals("Diesel")) return new Diesel(car);
-        else if(CarBt.FuelTypeCAR.equals("electricBut")) return new Electric(car);
-        else if(CarBt.FuelTypeCAR.equals("hybridBut")) return new Hybrid(car);
-        else if(CarBt.FuelTypeCAR.equals("gasBut")) return new NaturalGas(car);
+        if(CarBt.FuelTypeCAR.equals("petrolBut")) car =  new Petrol(car);
+        else if(CarBt.FuelTypeCAR.equals("Diesel")) car = new Diesel(car);
+        else if(CarBt.FuelTypeCAR.equals("electricBut")) car = new Electric(car);
+        else if(CarBt.FuelTypeCAR.equals("hybridBut")) car = new Hybrid(car);
+        else if(CarBt.FuelTypeCAR.equals("gasBut")) car = new NaturalGas(car);
+
+        if(CarBt.KlassCAR.equals("economy")) car = new Economy(car);
+        else if(CarBt.KlassCAR.equals("comfort")) car = new Comfort(car);
+        else if(CarBt.KlassCAR.equals("business")) car = new Business(car);
+
+        if(CarBt.ManufacturerCAR.equals("america")) car = new America(car);
+        else if(CarBt.ManufacturerCAR.equals("europe")) car = new Europe(car);
+        else if(CarBt.ManufacturerCAR.equals("asian")) car = new Asian(car);
+
         return car;
     }
     public static Car startFactory(int type, int typeType, Car car){

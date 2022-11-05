@@ -46,9 +46,9 @@ public class adminNotificationController implements Initializable {
     private void handle(){
         DBC connectNow = new DBC();
         Connection connectionDB = connectNow.getConnection();
-
+        String sql = "SELECT * FROM admin_notification order by notification_id desc";
         try {
-            ResultSet queryResultUser = connectionDB.createStatement().executeQuery("SELECT * FROM admin_notification order by notification_id desc");
+            ResultSet queryResultUser = connectionDB.createStatement().executeQuery(sql);
 
 
             while (queryResultUser.next()){

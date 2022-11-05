@@ -29,9 +29,9 @@ public class adminNotificationList implements Initializable {
     private void load() {
         DBC connectNow = new DBC();
         Connection connectionDB = connectNow.getConnection();
-
+        String sql = "SELECT * FROM admin_notification order by notification_id desc limit 6";
         try {
-            ResultSet queryResultUser = connectionDB.createStatement().executeQuery("SELECT * FROM admin_notification order by notification_id desc limit 6");
+            ResultSet queryResultUser = connectionDB.createStatement().executeQuery(sql);
 
 
             while (queryResultUser.next()){

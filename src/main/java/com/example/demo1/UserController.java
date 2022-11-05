@@ -2,11 +2,14 @@ package com.example.demo1;
 
 import com.example.demo1.models.Notification;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,8 +27,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
-
-
     @FXML private ImageView homeTab;
     @FXML private BorderPane mainPane;
     @FXML private ImageView messengeTab;
@@ -39,12 +40,42 @@ public class UserController implements Initializable {
     boolean settingsTabStatus = false;
     boolean messengerTabStatus = false;
 
-
+    @FXML private Label warningLabel;
     public void handleHomeAction(){
         FxmlLoader Object = new FxmlLoader();
-        Pane view = Object.getPage("userHomeScene.fxml");
+        Pane view = Object.getPage("nurUserHomeScene.fxml");
         mainPane.setCenter(view);
         homeTab.setStyle("-fx-opacity: 100%");
+/*        ObservableList<Node> list = view.getChildren();
+        for (Node node:
+             list) {
+            System.out.println(node);
+        }*/
+        if(Data.type==1) {
+            Pane view2 = Object.getPage("nurUserHomeEnterDistance.fxml");
+            view.getChildren().add(view2);
+            view2.setStyle("-fx-translate-x: 150");
+        }else if(Data.type==2){
+            Pane view2 =Object.getPage("nurUserHomeChooseOption.fxml");
+            view.getChildren().add(view2);
+            view2.setStyle("-fx-translate-x: 150");
+        }else if(Data.type==3){
+            Pane view2 = Object.getPage("nurUserHomeCustomizeTransport.fxml");
+            view.getChildren().add(view2);
+            view2.setStyle("-fx-translate-x: 150");
+        }else if(Data.type==4){
+            Data.optionType=1;
+            Pane view2 = Object.getPage("nurUserHomeAnswerPage.fxml");
+            view.getChildren().add(view2);
+        }else if(Data.type==5){
+            Data.optionType=2;
+            Pane view2 = Object.getPage("nurUserHomeAnswerPage.fxml");
+            view.getChildren().add(view2);
+        }else if(Data.type==6){
+            System.out.println(warningLabel.getStyle());
+            warningLabel.setText("Distance is "+Data.distance+" km");
+//            warningLabel.setStyle("-fx-translate-x: "+warningLabel.getStyle());
+        }
 
         notificationTabStatus = false;
         settingsTabStatus = false;
@@ -133,7 +164,8 @@ public class UserController implements Initializable {
     }
 
     public void handleSettingsAction(){
-        FxmlLoader Object = new FxmlLoader();        Pane view = Object.getPage("UserSettingScene.fxml");
+        FxmlLoader Object = new FxmlLoader();
+        Pane view = Object.getPage("UserSettingScene.fxml");
         mainPane.setCenter(view);
         settingsTab.setStyle("-fx-opacity: 100%");
 
@@ -194,7 +226,7 @@ public class UserController implements Initializable {
 
     private void showNotification(String messenger){
         try {
-            Image image = new Image("C:\\my\\Web-work\\2022\\demo1\\src\\main\\resources\\com\\icons\\usercreated.png");
+            Image image = new Image("C:\\Users\\Lenovo\\Desktop\\ASSA-main\\src\\main\\resources\\com\\icons\\usercreated.png");
             Notifications notificationBuilder = Notifications.create()
                     .title("New notification")
                     .text(messenger)

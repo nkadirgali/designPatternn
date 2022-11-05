@@ -1,6 +1,8 @@
 package com.example.demo1.Basic;
 
+import com.example.demo1.CarSub.Klass.Comfort;
 import com.example.demo1.ConcreteObjects.Plane;
+import com.example.demo1.PlaneBt;
 import com.example.demo1.PlaneSub.BodyType.Biplane;
 import com.example.demo1.PlaneSub.BodyType.Jet;
 import com.example.demo1.PlaneSub.BodyType.Propeller;
@@ -13,12 +15,22 @@ import java.util.Scanner;
 public class PlaneFactory extends TransportFactory {
 
     public static Plane startFactory(){
-        System.out.println("Choose body type of plane");
+        Plane plane = new Plane();
+        if(PlaneBt.BodyTypePlane.equals("Biplane")) plane = new Biplane(plane);
+        else if(PlaneBt.BodyTypePlane.equals("Jet")) plane = new Jet(plane);
+        else if(PlaneBt.BodyTypePlane.equals("Propeller")) plane = new Propeller(plane);
+
+        if(PlaneBt.KlassPlane.equals("business")) plane = new Business(plane);
+        else if(PlaneBt.KlassPlane.equals("luxury")) plane = new Luxury(plane);
+        else if(PlaneBt.KlassPlane.equals("economy")) plane = new Economy(plane);
+
+        return plane;
+ /*       System.out.println("Choose body type of plane");
         Plane plane = planeBodyTypes();
         System.out.println("Choose klass of plane");
         plane = PlaneKlasses(plane);
 
-        return plane;
+        return plane;*/
     }
 
     private static Plane planeBodyTypes() {

@@ -13,9 +13,9 @@ import java.util.Date;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 public class DB {
-    private final String url = "jdbc:postgresql://localhost:5433/";
+    private final String url = "jdbc:postgresql://localhost/";
     private final String user = "postgres";
-    private final String password = "1234";
+    private final String password = "nurdaulet";
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String username,password1;
     Scanner sc = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class DB {
     public Connection connect() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(url+"characters", user, password);
+            conn = DriverManager.getConnection(url+"Observer", user, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

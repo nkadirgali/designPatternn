@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
         DBC connectNow = new DBC();
         Connection connectionDB = connectNow.getConnection();
 
-        String verifyLoginUser = "SELECT count(1) FROM users WHERE username = '"+ usernameTextField.getText() +"' AND password	='"+ enterPasswordField.getText() +"'  ";
+        String verifyLoginUser = "SELECT count(1) FROM users WHERE username = '"+ usernameTextField.getText() +"' AND password	='"+ enterPasswordField.getText() +"'";
         try {
 
             Statement statement = connectionDB.createStatement();
@@ -80,7 +80,7 @@ public class LoginController implements Initializable {
                         if(queryResultUser.getInt(1)==1){
                             //loginMessageLabel.setText("Congratulations User!");
 
-                            SceneController scene = new SceneController();
+                            SceneController scene = SceneController.getInstance();
                             scene.switchToSplashScreenScene(event);
                         }else{
                             loginMessageLabel.setText("Invalid login. Please try again!");
@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
                     //loginMessageLabel.setText("Congratulations Admin!");
 
                     //User user = new User(queryResultUser.getString(1),queryResultUser.getString(2),queryResultUser.getString(3),queryResultUser.getString(4));
-                    SceneController scene = new SceneController();
+                    SceneController scene = SceneController.getInstance();
                     scene.switchToAdminMainScene(event);
 
                 }else{
@@ -126,7 +126,7 @@ public class LoginController implements Initializable {
 
     public void createAccountForm(ActionEvent event){
         try{
-            SceneController scene = new SceneController();
+            SceneController scene = SceneController.getInstance();
             scene.switchToRegisterScene(event);
 
         }catch (Exception e){

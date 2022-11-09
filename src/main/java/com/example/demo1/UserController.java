@@ -72,8 +72,9 @@ public class UserController implements Initializable {
             Pane view2 = Object.getPage("nurUserHomeAnswerPage.fxml");
             view.getChildren().add(view2);
         }else if(Data.type==6){
-            System.out.println(warningLabel.getStyle());
-            warningLabel.setText("Distance is "+Data.distance+" km");
+            Pane view2 = Object.getPage("nurUserSeeDistance.fxml");
+            view.getChildren().add(view2);
+            view2.setStyle("-fx-translate-x: 150");
 //            warningLabel.setStyle("-fx-translate-x: "+warningLabel.getStyle());
         }
 

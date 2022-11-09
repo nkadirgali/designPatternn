@@ -6,7 +6,7 @@ public class DBC {
     public Connection databaseLink;
 
     public Connection getConnection(){
-        String databaseName = "Observer";
+        String databaseName = "characters";
         String databaseUser = "postgres";
         String databasePassword = "nurdaulet";
         String url = "jdbc:postgresql://localhost/" + databaseName;

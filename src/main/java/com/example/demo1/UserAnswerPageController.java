@@ -82,7 +82,7 @@ public class UserAnswerPageController implements Initializable {
         if(Data.optionType==1) view2 = Object.getPage("nurUserHomeChooseTransport.fxml");
         else view2 = Object.getPage("nurUserHomeChooseOptionFC.fxml");
         hBox1.getChildren().add(view2);
-        view2.setStyle("-fx-translate-x: 150");
+        view2.setStyle("-fx-translaGte-x: 150");
 //        System.out.println(view2.getTranslateX()+" | "+view2.getWidth()+" | "+view2.getStyle());
     }
 }

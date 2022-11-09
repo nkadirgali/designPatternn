@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
         DBC connectNow = new DBC();
         Connection connectionDB = connectNow.getConnection();
 
-        String verifyLoginUser = "SELECT count(1) FROM users WHERE username = '"+ usernameTextField.getText() +"' AND password	='"+ enterPasswordField.getText() +"'";
+        String verifyLoginUser = "SELECT count(1) FROM users WHERE login = '"+ usernameTextField.getText() +"' AND password	='"+ enterPasswordField.getText() +"'";
         try {
 
             Statement statement = connectionDB.createStatement();
